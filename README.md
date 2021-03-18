@@ -1,29 +1,34 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Bridge between OLA daemon and GPIO softPWM.
+### Dependencies
 
-### What is this repository for? ###
+* python > 3.6
+* pip3 install ola RPi.GPIO
+* install OLA daemon first (see snippets rpi dmx)
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### service installation
 
-### How do I get set up? ###
+* create /etc/systemd/system/dmx2pwm.service
+Content:
+[Unit]
+Description=PWM DMX bridge
+After=olad.service
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+[Service]
+ExecStart=/usr/bin/python3 -u lightDMXcontroller.py
+WorkingDirectory=/home/pi/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
 
-### Contribution guidelines ###
+[Install]
+WantedBy=multi-user.target
 
-* Writing tests
-* Code review
-* Other guidelines
+### Service control
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+sudo sytemctl reload-daemon
+sudo systemctl start dmx2pwm
+sudo systemctl status dmx2pwm (check status)
+sudo systemctl enable dmx2pwm
