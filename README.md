@@ -9,12 +9,14 @@ Bridge between OLA daemon and GPIO softPWM.
 
 ### service installation
 
-* create /etc/systemd/system/dmx2pwm.service
+ create /etc/systemd/system/dmx2pwm.service  
+   
 Content:
+  
+```
 [Unit]
 Description=PWM DMX bridge
 After=olad.service
-
 [Service]
 ExecStart=/usr/bin/python3 -u lightDMXcontroller.py
 WorkingDirectory=/home/pi/
@@ -25,7 +27,7 @@ User=pi
 
 [Install]
 WantedBy=multi-user.target
-
+```
 ### Service control
 
 sudo sytemctl reload-daemon
