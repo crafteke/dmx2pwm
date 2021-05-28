@@ -29,8 +29,12 @@ User=pi
 WantedBy=multi-user.target
 ```
 ### Service control
-
+```
 sudo sytemctl reload-daemon
 sudo systemctl start dmx2pwm
 sudo systemctl status dmx2pwm (check status)
 sudo systemctl enable dmx2pwm
+```
+### Hostname & DMX node autoconfig
+Add `/home/pi/hostname_config.sh` in /etc/rc.local
+Set the config file dmx.config in /boot
