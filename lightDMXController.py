@@ -48,7 +48,6 @@ if __name__ == "__main__":
     config_file=open("/boot/dmx.config",'r')
     s=config_file.read()
     params = list(map(lambda e : e.split('\t') ,s.split('\n')))
-    name=list(filter(lambda e: e[0]=='name',params))[0][1]
     pins=list(filter(lambda e: e[0]=='pins',params))[0][1].split(',')
     universe=int(list(filter(lambda e: e[0]=='universe',params))[0][1])
     enabled_outputs = list(map(int,pins))
