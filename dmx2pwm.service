@@ -1,0 +1,13 @@
+ [Unit]
+Description=PWM DMX bridge
+After=olad.service
+[Service]
+ExecStart=/usr/bin/python3 -u lightDMXcontroller.py
+WorkingDirectory=/home/pi/dmx2pwm/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
