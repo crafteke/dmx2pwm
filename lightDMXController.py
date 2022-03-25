@@ -30,7 +30,8 @@ def updatePWM():
         pwm_pins[x].ChangeDutyCycle(int(pwm_values[x]*100/255))
 
 def NewData(data):
-    for x in range(0,len(enabled_outputs)):
+    #take the minimum of both array to avoid exception
+    for x in range(0,min(len(data),len(enabled_outputs)):
         pwm_values[x]=data[x]
 
 def handler(signal_received, frame):
@@ -54,7 +55,7 @@ if __name__ == "__main__":
     pwm_pins= [None]*len(enabled_outputs)
     pwm_values =[0]*len(enabled_outputs)
     enabled_outputs=list(map(int,pins))
-    print("Starting DMX2PWM. ",len(enabled_outputs)," outputs activated. Listening on universe ",universe,".")
+    print("Starting DMX2PWM. ",len(enabled_outputs)," outputs activated.\nListening on universe ",universe,".")
     # Clear all the pixels to turn them off.
     wrapper = ClientWrapper()
     initPWM()
