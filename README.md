@@ -11,12 +11,12 @@ Bridge between OLA daemon and GPIO softPWM.
 
 For reference see: https://www.openlighting.org/ola/advanced-topics/patch-persistency/#ola-portconf
 
-create universe in /etc/ola/ola-universe.conf 
+create universe in /etc/ola/ola-universe.conf  (not working, TODO find the static config file of olad)
 ```
 uni_X_merge = LTP
 uni_X_name = Universe X
 ```
-patch port to universe in /etc/ola/ola-port.conf 
+patch port to universe in /etc/ola/ola-port.conf (not working, TODO find the static config file of olad)
 ```
 2-1-I-0 = X # X is universe 
 2-1-I-0_priority_value = 100
@@ -30,7 +30,20 @@ listing devices
 ```
 ola_device_info
 ```
+Fix the usb device bug(see in logs: common/io/Serial.cpp:151: Device /dev/ttyUSB0 doesn't exist, so there's no point trying to acquire a lock)
+```
+sudo rm /etc/ola/ola-stageprofi.conf;sudo echo -e 'device = /dev/ttyUSB0\nenabled = false\n' > /etc/ola/ola-stageprofi.conf 
 
+```
+Activate the USB FTDI / DMX plugin (if needed)
+```
+disable USB serial
+/etc/ola/ola-usbserial.conf
+disable enttec open DMX
+/etc/ola/ola-opendmx.conf
+enable FTDI
+/etc/ola/ola-ftdidmx.conf
+```
 
 ### OLA python patching (workaround for issue with comparators)
 update apt and install ola
