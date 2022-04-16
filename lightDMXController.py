@@ -38,10 +38,10 @@ def NewData(data):
 
 def PatchPortCallback(status):
     if status.Succeeded():
-        print('Success!')
+        print('Patching universe success!')
     else:
         print('Error: %s' % status.message, file=sys.stderr)
-    
+
 def handler(signal_received, frame):
     # Handle any cleanup here
     print('SIGINT or CTRL-C detected. Exiting gracefully')
