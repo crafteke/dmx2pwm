@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 from signal import signal, SIGINT
 from sys import exit
 from ola.ClientWrapper import ClientWrapper
+from ola.OlaClient import OlaClient
 
 GPIO.setmode(GPIO.BCM)
 
