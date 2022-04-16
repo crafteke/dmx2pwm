@@ -41,8 +41,7 @@ def PatchPortCallback(status):
         print('Success!')
     else:
         print('Error: %s' % status.message, file=sys.stderr)
-    wrapper.Stop()
-
+    
 def handler(signal_received, frame):
     # Handle any cleanup here
     print('SIGINT or CTRL-C detected. Exiting gracefully')
