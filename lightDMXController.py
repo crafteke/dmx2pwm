@@ -59,6 +59,7 @@ if __name__ == "__main__":
     wrapper = ClientWrapper()
     initPWM()
     client = wrapper.Client()
+    client.PatchPort(2, 0, False, OlaClient.PATCH, universe, PatchPortCallback)
     client.RegisterUniverse(universe, client.REGISTER, NewData)
     wrapper.AddEvent(REFRESH_DELAY, updatePWM)
     wrapper.Run()
