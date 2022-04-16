@@ -2,6 +2,7 @@ import time
 import RPi.GPIO as GPIO
 from signal import signal, SIGINT
 from sys import exit
+import sys
 from ola.ClientWrapper import ClientWrapper
 from ola.OlaClient import OlaClient
 
