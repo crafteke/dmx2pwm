@@ -35,6 +35,14 @@ def NewData(data):
     for x in range(0,min(len(data),len(enabled_outputs))):
         pwm_values[x]=data[x]
 
+
+def PatchPortCallback(status):
+    if status.Succeeded():
+        print('Success!')
+    else:
+        print('Error: %s' % status.message, file=sys.stderr)
+    wrapper.Stop()
+
 def handler(signal_received, frame):
     # Handle any cleanup here
     print('SIGINT or CTRL-C detected. Exiting gracefully')
