@@ -31,7 +31,7 @@ def updatePWM():
 
 def NewData(data):
     #take the minimum of both array to avoid exception
-    for x in range(0,min(len(data),len(enabled_outputs)):
+    for x in range(0,min(len(data),len(enabled_outputs))):
         pwm_values[x]=data[x]
 
 def handler(signal_received, frame):
